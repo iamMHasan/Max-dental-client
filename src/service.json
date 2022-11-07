@@ -1,0 +1,32 @@
+[
+    {
+        "cata_id" : 1,
+        "name" : "Dental Bonding",
+        "img" : "https://www.napervillecosmeticdentistry.com/wp-content/uploads/2019/09/blacktriangles.jpg"
+    },
+    {
+        "cata_id" : 2,
+        "name" : "Dental Crowns",
+        "img" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPsZC_pRYYjQTxmdMT2tPzRFoyHkNUDSpb-1j0uYZ8IHpw3_dzYJip4mz_ir4CnjOyQg4&usqp=CAU"
+    },
+    {
+        "cata_id" : 3,
+        "name" : "Cosmetic Fillings",
+        "img" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiPjiSA4EpmhPhaGrSC5IkCUxOjdf5iGmUnCLYJryVmhPtq0au0zrX7b4PGLsRT5lGfHc&usqp=CAU"
+    },
+    {
+        "cata_id" : 4,
+        "name" : "Dental Veneers",
+        "img" : "https://www.familydentisttoledo.com/wp-content/uploads/2020/11/veneers-before.jpg"
+    },
+    {
+        "cata_id" : 5,
+        "name" : "Teeth Cleanings",
+        "img" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR7yjd2c5Ev4EiY4yoP8N0u9yK_5uwALef_CV5RLSIL8hpx-JKADf4LSkTvfx8RBeMsK8&usqp=CAU"
+    },
+    {
+        "cata_id" : 6,
+        "name" : " Dental Sealants",
+        "img" : "https://sherwaydentalcentre.com/wp-content/uploads/2016/04/featured-images-sealants.jpg"
+    }
+]

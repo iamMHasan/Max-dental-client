@@ -1,0 +1,38 @@
+[
+    {
+        "cata_id" : 1,
+        "name" : "Dental Bonding",
+        "img" : "https://www.napervillecosmeticdentistry.com/wp-content/uploads/2019/09/blacktriangles.jpg",
+        "details" : "Dental bonding is a technique used to correct imperfections with your teeth to give you a better-looking smile. Bonding is used to repair chipped teeth, decayed teeth, and cracked teeth. Bonding involves applying a tooth-colored resin material to the teeth and hardening it with a light. This bonds the material to the teeth to improve a person's smile."
+    },
+    {
+        "cata_id" : 2,
+        "name" : "Dental Crowns",
+        "img" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPsZC_pRYYjQTxmdMT2tPzRFoyHkNUDSpb-1j0uYZ8IHpw3_dzYJip4mz_ir4CnjOyQg4&usqp=CAU",
+        "details" : "- A dental crown is a dental prosthesis which replaces the visible part of a tooth. A dental crown functions to strengthen teeth, restore their original shape, and improve their appearance. Dental crowns are also used to hold dental bridges in place and cover dental implants."
+    },
+    {
+        "cata_id" : 3,
+        "name" : "Cosmetic Fillings",
+        "img" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiPjiSA4EpmhPhaGrSC5IkCUxOjdf5iGmUnCLYJryVmhPtq0au0zrX7b4PGLsRT5lGfHc&usqp=CAU",
+        "details" : "Cosmetic fillings, or tooth- colored fillings, are made of composite resin and glass particles. They are cemented onto the existing teeth using a bonding agent. Cosmetic fillings can improve the appearance of your smile. Unlike silver-colored fillings, cosmetic fillings look just like your natural teeth. "
+    },
+    {
+        "cata_id" : 4,
+        "name" : "Dental Veneers",
+        "img" : "https://www.familydentisttoledo.com/wp-content/uploads/2020/11/veneers-before.jpg",
+        "details" : " Many people are discovering the benefits of veneers. Veneers are thin coverings that are placed over the front part of the teeth. Veneers are placed on teeth that are crooked, poorly shaped, or severely discolored. They may also be used to lighten teeth that are yellow or have a gray cast."
+    },
+    {
+        "cata_id" : 5,
+        "name" : "Teeth Cleanings",
+        "img" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR7yjd2c5Ev4EiY4yoP8N0u9yK_5uwALef_CV5RLSIL8hpx-JKADf4LSkTvfx8RBeMsK8&usqp=CAU",
+        "details" : "You should visit the dentist every six months for teeth cleanings. Tartar is a hard buildup of plaque that forms on the teeth. Tartar forms below and above the gum line. The only way to remove tartar is to see a dentist for a professional teeth cleaning. Regular teeth cleanings are important to maintaining healthy teeth and gums."
+    },
+    {
+        "cata_id" : 6,
+        "name" : " Dental Sealants",
+        "img" : "https://sherwaydentalcentre.com/wp-content/uploads/2016/04/featured-images-sealants.jpg",
+        "details" : "Sealants are made of plastic and are applied to the chewing surfaces of the back teeth to prevent tooth decay. Sealants are painted on as a liquid and harden to form a shield over the teeth. Having sealants put on your teeth will save you money in the long run by avoiding dental fillings, crowns, and other dental treatments."
+    }
+]
