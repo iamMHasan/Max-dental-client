@@ -3,6 +3,7 @@ import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Main from './Layout/Main';
 import Home from './components/Home';
+import Services from './components/Services';
 
 function App() {
   const router = createBrowserRouter([
@@ -14,6 +15,11 @@ function App() {
           path: '/',
           element: <Home></Home>,
           loader : ()=> fetch('http://localhost:5000/servicesName')
+        },
+        {
+          path : '/services',
+          element : <Services></Services>,
+          loader : ()=> fetch('http://localhost:5000/services')
         }
       ]
     }
