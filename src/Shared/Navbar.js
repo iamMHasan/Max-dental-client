@@ -12,10 +12,12 @@ const Navbar = () => {
     }
     const menuItems = <>
         <li><Link to='/'>Home</Link></li>
-        <li><Link to='/'>Orders</Link></li>
         {
             user?.uid ?
-                <li><Link onClick={handleLogOut} to='/register'>Log Out</Link></li>
+                <>
+                    <li><Link to='/myreviews'>My reviews</Link></li>
+                    <li><Link onClick={handleLogOut} to='/register'>Log Out</Link></li>
+                </>
                 :
                 <>
                     <li><Link to='/login'>Login</Link></li>
@@ -42,8 +44,8 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-            <img className='w-[40px] mr-3 h-[40px] rounded-full' src={user?.photoURL} alt="" />
-            <p>{user?.displayName}</p>
+                <img className='w-[40px] mr-3 h-[40px] rounded-full' src={user?.photoURL} alt="" />
+                <p>{user?.displayName}</p>
             </div>
         </div>
     );

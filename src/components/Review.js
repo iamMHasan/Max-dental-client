@@ -6,12 +6,51 @@ import Reviewform from './Reviewform';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import ServiceReview from './ServiceReview';
+import { toast } from 'react-toastify'
 
 const Review = () => {
+    const {user} = useContext(AuthContext)
+    const {photoURL} = user
     const [reviewItem, setReviewItem] = useState([])
-    const [updatedReviewitem, setUpdatedReviewitem] = useState()
+    const [updatedReviewitem, setUpdatedReviewitem] = useState(reviewItem)
+    // 
+    // const handleReview = e => {
+    //     e.preventDefault()
+    //     const disPlayname = e.target.name.value
+    //     const email = e.target.email.value
+    //     const message = e.target.message.value
+
+
+    //     const reviewDetails = {
+
+    //         disPlayname,
+    //         serviceName: name,
+    //         service: _id,
+    //         email,
+    //         message,
+    //         photoURL,
+    //     }
+
+    //     fetch('http://localhost:5000/review', {
+    //         method: 'POST',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(reviewDetails)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //            console.log(data);
+    //             if (data.acknowledged) {
+    //                 toast.success('successfully submited review')
+    //                 e.target.reset()
+    //             }
+    //         })
+    //         .catch(err => console.log(err))
+
+    // }
+
     
-    const { user } = useContext(AuthContext)
     const serviceData = useLoaderData()
     // console.log(serviceData);
 
