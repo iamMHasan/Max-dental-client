@@ -12,7 +12,7 @@ const Home = () => {
             <div className='grid grid-cols-3 gap-7 my-10'>
                 {
                     serviceName.map(serName => (
-                        <div>
+                        <div key={serName._id}>
                             <p className='border rounded p-9  hover:bg-slate-400'>{serName.name}</p>
                         </div>
                     ))
