@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Reviewform from './Reviewform';
 
 const Review = () => {
     const serviceData = useLoaderData()
@@ -7,6 +8,7 @@ const Review = () => {
     const { name, img, details } = serviceData
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6 my-6'>
+            {/* service details section */}
             <div className="card  bg-base-100 shadow-xl">
                 <figure><img src={img} alt="img" className='w-full h-full' /></figure>
                 <div className="card-body">
@@ -17,8 +19,16 @@ const Review = () => {
                     <p>{details}</p>
                 </div>
             </div>
+            {/* review section */}
             <div>
+                <div className="flex flex-col">
+                    <div>
 
+                    </div>
+                    <div>
+                        <Reviewform></Reviewform>
+                    </div>
+                </div>
             </div>
 
         </div>
