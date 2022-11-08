@@ -9,6 +9,7 @@ import Review from './components/Review';
 import Login from './components/Login';
 import Register from './components/Register';
 import MyReviews from './components/MyReviews';
+import Blog from './components/Blog';
 
 function App() {
   const router = createBrowserRouter([
@@ -47,6 +48,10 @@ function App() {
         {
           path : '/myreviews',
           element : <MyReviews></MyReviews>
+        },
+        {
+          path : '/blog',
+          element : <Blog></Blog>
         }
       ]
     }

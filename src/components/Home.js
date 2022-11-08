@@ -7,7 +7,6 @@ const Home = () => {
     const serviceName = useLoaderData()
     return (
         <div className='h-[80vh]'>
-            <h2>welcome h;ome</h2>
                 <h1>Find Our Best Services</h1>
             <div className='grid grid-cols-3 gap-7 my-10'>
                 {
