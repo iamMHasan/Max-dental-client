@@ -1,21 +1,24 @@
 import React from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthProvider';
+import {toast} from 'react-toastify'
 
 const Reviewform = ({serviceData}) => {
-    const {_id} = serviceData
+    const {_id, name} = serviceData
 
     const { user } = useContext(AuthContext)
 
     const handleReview = e => {
         e.preventDefault()
-        const name = e.target.name.value 
+        const disPlayname = e.target.name.value 
         const email = e.target.email.value 
         const message = e.target.message.value
         console.log(name, email, message);
 
 
         const reviewDetails = {
+            disPlayname,
+            serviceName : name,
             service : _id ,
             email,
             message,
@@ -28,6 +31,15 @@ const Reviewform = ({serviceData}) => {
             },
             body : JSON.stringify(reviewDetails)
         })
+        .then(res => res.json())
+        .then(data =>{
+            console.log(data);
+            if(data.acknowledged){
+                toast.success('successfully submited review')
+                e.target.reset()
+            }
+        })
+        .catch(err => console.log(err))
         
     }
     return (
