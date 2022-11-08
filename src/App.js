@@ -5,6 +5,7 @@ import Main from './Layout/Main';
 import Home from './components/Home';
 import Services from './components/Services';
 import Error from './components/Error';
+import Review from './components/Review';
 
 function App() {
   const router = createBrowserRouter([
@@ -26,6 +27,11 @@ function App() {
           path : '/services',
           element : <Services></Services>,
           loader : ()=> fetch('http://localhost:5000/services')
+        },
+        {
+          path : '/services/:id',
+          element : <Review></Review>,
+          loader : ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
         }
       ]
     }
