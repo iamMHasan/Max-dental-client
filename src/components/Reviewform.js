@@ -1,46 +1,49 @@
 import React from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthProvider';
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 
-const Reviewform = ({serviceData}) => {
-    const {_id, name} = serviceData
+
+const Reviewform = ({ serviceData }) => {
+    const { _id, name } = serviceData
 
     const { user } = useContext(AuthContext)
+    console.log(user);
+    const {photoURL} = user
 
     const handleReview = e => {
         e.preventDefault()
-        const disPlayname = e.target.name.value 
-        const email = e.target.email.value 
+        const disPlayname = e.target.name.value
+        const email = e.target.email.value
         const message = e.target.message.value
-        console.log(name, email, message);
 
 
         const reviewDetails = {
+
             disPlayname,
-            serviceName : name,
-            service : _id ,
+            serviceName: name,
+            service: _id,
             email,
             message,
+            photoURL,
         }
 
-        fetch('http://localhost:5000/review',{
-            method : 'POST' ,
-            headers : {
-                'content-type' : 'application/json'
+        fetch('http://localhost:5000/review', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
             },
-            body : JSON.stringify(reviewDetails)
+            body: JSON.stringify(reviewDetails)
         })
-        .then(res => res.json())
-        .then(data =>{
-            console.log(data);
-            if(data.acknowledged){
-                toast.success('successfully submited review')
-                e.target.reset()
-            }
-        })
-        .catch(err => console.log(err))
-        
+            .then(res => res.json())
+            .then(data => {
+                if (data.acknowledged) {
+                    toast.success('successfully submited review')
+                    e.target.reset()
+                }
+            })
+            .catch(err => console.log(err))
+
     }
     return (
         <form onSubmit={handleReview}>
@@ -57,7 +60,7 @@ const Reviewform = ({serviceData}) => {
                 <p className='mr-3'>Message</p>
                 <textarea name='message' className='w-full p-2 rounded' type="text" />
             </div>
-            <button  className='btn btn-ghost'>SUBMIT</button>
+            <button className='btn btn-ghost'>SUBMIT</button>
         </form>
     );
 };
