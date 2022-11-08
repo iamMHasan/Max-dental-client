@@ -10,6 +10,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import MyReviews from './components/MyReviews';
 import Blog from './components/Blog';
+import PrivateRoutes from './Privateroutes/PrivateRoutes';
 
 function App() {
   const router = createBrowserRouter([
@@ -47,7 +48,7 @@ function App() {
         },
         {
           path : '/myreviews',
-          element : <MyReviews></MyReviews>
+          element : <PrivateRoutes><MyReviews></MyReviews></PrivateRoutes>
         },
         {
           path : '/blog',

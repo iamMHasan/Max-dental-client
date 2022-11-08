@@ -8,9 +8,11 @@ import Review from './Review';
 import useTitle from '../hooks/useTitle';
 
 const MyReviews = () => {
+    const { user, loading } = useContext(AuthContext)
     useTitle('My Reviews')
-    const { user } = useContext(AuthContext)
     const [myReview, setMyReview] = useState([])
+    
+   
 
     useEffect(() => {
         fetch(`http://localhost:5000/review?email=${user?.email}`)
@@ -35,7 +37,9 @@ const MyReviews = () => {
         }
     }
    
-
+    if(loading){
+        return <div className="w-16  flex h-16 items-center justify-center border-4 border-dashed rounded-full animate-spin border-violet-400"></div>
+    }
     return (
         <div>
             {

@@ -1,14 +1,16 @@
 import React from 'react';
 import useTitle from '../hooks/useTitle';
-import {useLoaderData, Link} from 'react-router-dom'
+import { useLoaderData, Link } from 'react-router-dom'
+import Banner from './Banner';
 
 
 const Home = () => {
     useTitle("home")
     const serviceName = useLoaderData()
     return (
-        <div className='h-[80vh]'>
-                <h1>Find Our Best Services</h1>
+        <div className=''>
+            <Banner></Banner>
+            <h1 className='my-8'>Find the service i serve</h1>
             <div className='grid grid-cols-3 gap-7 my-10'>
                 {
                     serviceName.map(serName => (
@@ -17,8 +19,8 @@ const Home = () => {
                         </div>
                     ))
                 }
+                <Link to='/services'><button className='btn btn-ghost'><h3>Load more services....</h3></button></Link>
             </div>
-            <Link to='/services'><h3>Load more services....</h3></Link>
         </div>
     );
 };

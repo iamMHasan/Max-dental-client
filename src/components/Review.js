@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../context/AuthProvider';
 import Reviewform from './Reviewform';
 import { useEffect } from 'react';
@@ -93,7 +93,7 @@ const Review = () => {
                        {
                             user?.uid ? <Reviewform
                                 serviceData={serviceData}
-                            ></Reviewform> : <h2 className='text-red-600 '>Please login to add review</h2>
+                            ></Reviewform> : <Link to='/login'><h2 className='text-red-600 '>Please login to add review</h2></Link>
                         }
                     </div>
                 </div>
