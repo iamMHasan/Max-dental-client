@@ -10,7 +10,7 @@ import { toast } from 'react-toastify'
 
 const Review = () => {
     const {user} = useContext(AuthContext)
-    const {photoURL} = user
+    // const {photoURL} = user
     const [reviewItem, setReviewItem] = useState([])
     const [updatedReviewitem, setUpdatedReviewitem] = useState(reviewItem)
     // 

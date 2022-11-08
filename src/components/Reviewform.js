@@ -8,7 +8,7 @@ const Reviewform = ({ serviceData }) => {
     const { _id, name } = serviceData
 
     const { user } = useContext(AuthContext)
-    console.log(user);
+    // console.log(user);
     const {photoURL} = user
 
     const handleReview = e => {

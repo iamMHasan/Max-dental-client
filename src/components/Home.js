@@ -2,6 +2,7 @@ import React from 'react';
 import useTitle from '../hooks/useTitle';
 import {useLoaderData, Link} from 'react-router-dom'
 
+
 const Home = () => {
     useTitle("home")
     const serviceName = useLoaderData()
