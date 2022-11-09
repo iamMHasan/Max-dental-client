@@ -11,6 +11,7 @@ import Register from './components/Register';
 import MyReviews from './components/MyReviews';
 import Blog from './components/Blog';
 import PrivateRoutes from './Privateroutes/PrivateRoutes';
+import Addservice from './components/Addservice';
 
 function App() {
   const router = createBrowserRouter([
@@ -49,6 +50,10 @@ function App() {
         {
           path : '/myreviews',
           element : <PrivateRoutes><MyReviews></MyReviews></PrivateRoutes>
+        },
+        {
+          path : '/addservice',
+          element : <Addservice></Addservice>
         },
         {
           path : '/blog',
