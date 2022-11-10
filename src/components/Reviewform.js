@@ -4,47 +4,47 @@ import { AuthContext } from '../context/AuthProvider';
 import { toast } from 'react-toastify'
 
 
-const Reviewform = ({ serviceData }) => {
+const Reviewform = ({ serviceData,handleReview }) => {
     const { _id, name } = serviceData
 
     const { user } = useContext(AuthContext)
     // console.log(user);
     const {photoURL} = user
 
-    const handleReview = e => {
-        e.preventDefault()
-        const disPlayname = e.target.name.value
-        const email = e.target.email.value
-        const message = e.target.message.value
+    // const handleReview = e => {
+    //     e.preventDefault()
+    //     const disPlayname = e.target.name.value
+    //     const email = e.target.email.value
+    //     const message = e.target.message.value
 
 
-        const reviewDetails = {
+    //     const reviewDetails = {
 
-            disPlayname,
-            serviceName: name,
-            service: _id,
-            email,
-            message,
-            photoURL,
-        }
+    //         disPlayname,
+    //         serviceName: name,
+    //         service: _id,
+    //         email,
+    //         message,
+    //         photoURL,
+    //     }
 
-        fetch('http://localhost:5000/review', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(reviewDetails)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.acknowledged) {
-                    toast.success('successfully submited review')
-                    e.target.reset()
-                }
-            })
-            .catch(err => console.log(err))
+    //     fetch('https://assignement-11-server.vercel.app/review', {
+    //         method: 'POST',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(reviewDetails)
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.acknowledged) {
+    //                 toast.success('successfully submited review')
+    //                 e.target.reset()
+    //             }
+    //         })
+    //         .catch(err => console.log(err))
 
-    }
+    // }
     return (
         <form onSubmit={handleReview}>
             <h3>Please submit your review</h3>

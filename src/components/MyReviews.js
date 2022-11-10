@@ -2,42 +2,65 @@ import React from 'react';
 import { useContext } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 import { AuthContext } from '../context/AuthProvider';
 import Review from './Review';
 import useTitle from '../hooks/useTitle';
+import { Link } from 'react-router-dom';
 
 const MyReviews = () => {
-    const { user, loading } = useContext(AuthContext)
+    const { user, loading, logOutUser } = useContext(AuthContext)
     useTitle('My Reviews')
     const [myReview, setMyReview] = useState([])
-    
-   
+
+
 
     useEffect(() => {
-        fetch(`http://localhost:5000/review?email=${user?.email}`)
-            .then(res => res.json())
+        fetch(`https://assignement-11-server.vercel.app/review?email=${user?.email}`, {
+            headers: {
+                authorization: `bearer ${localStorage.getItem('auth-token')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    logOutUser()
+                    localStorage.removeItem('genius-Token')
+                }
+                return res.json()
+            })
             .then(data => setMyReview(data))
-    }, [user?.email])
+    }, [user?.email,logOutUser])
 
     const handleDelete = id => {
         const agree = window.confirm(`are you sure to delete?${id}`)
         if (agree) {
-            fetch(`http://localhost:5000/review/${id}`, {
+            fetch(`https://assignement-11-server.vercel.app/review/${id}`, {
                 method: 'DELETE'
             })
-            .then(res => res.json())
-            .then(data =>{
-                console.log(data);
-                const remaining = myReview.filter(r => r._d !== id)
-                setMyReview(remaining)
-                toast.dark('deleted successful')
-            })
-            .catch(err => console.log(err))
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    const remaining = myReview.filter(r => r._id !== id)
+                    setMyReview(remaining)
+                    toast.dark('deleted successful')
+                })
+                .catch(err => console.log(err))
         }
     }
-   
-    if(loading){
+    
+    
+    // const handleBtnToUpdate = (id, message) =>{
+    //     console.log(id);
+    //     fetch(`https://assignement-11-server.vercel.app/review/${id}`, {
+    //         method: 'PUT',
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         },
+    //         body: JSON.stringify(message)
+    //     })
+    // }
+
+    if (loading) {
         return <div className="w-16  flex h-16 items-center justify-center border-4 border-dashed rounded-full animate-spin border-violet-400"></div>
     }
     return (
@@ -53,15 +76,33 @@ const MyReviews = () => {
                                     </div>
                                     <div>
                                         <button onClick={() => handleDelete(rev._id)} className='btn btn-ghost text-red-600'>Delete</button>
-                                        <button className='btn btn-ghost'>Edit</button>
+                                        {/* <button onClick={()=>handleBtnToUpdate(rev._id)} className="btn-ghost">
+                                            <label htmlFor="my-modal" className="btn btn-ghost">Update</label>
+                                        </button> */}
+                                        <Link to={`/updatereview/${rev._id}`}>
+                                            <button className="btn-ghost">Update</button>
+                                        </Link>
                                     </div>
                                 </div>
                                 <p className='bg-yellow-500  rounded p-6 my-3'><span className='text-blue-500 font-bold'>Review</span> :{rev.message}</p>
+                                {/* modal for update user */}
+                                {/* <input type="checkbox" id="my-modal" className="modal-toggle" />
+                                <div className="modal">
+                                    <div className="modal-box">
+                                        <form onSubmit={handleUpdate} className='my-2' action="">
+                                            <textarea className='w-full border-2' name="message" id="" cols="30" rows="10"></textarea>
+                                            <button className="btn-ghost">
+                                                <label htmlFor="my-modal" className="btn">Yay!</label>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div> */}
                             </div>
                         ))
                     }
                 </>
             }
+
         </div>
     );
 };

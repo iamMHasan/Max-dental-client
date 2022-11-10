@@ -12,6 +12,7 @@ import MyReviews from './components/MyReviews';
 import Blog from './components/Blog';
 import PrivateRoutes from './Privateroutes/PrivateRoutes';
 import Addservice from './components/Addservice';
+import UpdateReview from './components/UpdateReview';
 
 function App() {
   const router = createBrowserRouter([
@@ -27,17 +28,17 @@ function App() {
         {
           path: '/',
           element: <Home></Home>,
-          loader : ()=> fetch('http://localhost:5000/servicesName')
+          loader : ()=> fetch('https://assignement-11-server.vercel.app/servicesName')
         },
         {
           path : '/services',
           element : <Services></Services>,
-          loader : ()=> fetch('http://localhost:5000/services')
+          loader : ()=> fetch('https://assignement-11-server.vercel.app/services')
         },
         {
           path : '/services/:id',
           element : <Review></Review>,
-          loader : ({params}) => fetch(`http://localhost:5000/services/${params.id}`)
+          loader : ({params}) => fetch(`https://assignement-11-server.vercel.app/services/${params.id}`)
         },
         {
           path : '/login',
@@ -53,11 +54,17 @@ function App() {
         },
         {
           path : '/addservice',
-          element : <Addservice></Addservice>
+          element : <PrivateRoutes><Addservice></Addservice></PrivateRoutes>,
+          loader : ()=> fetch(`https://assignement-11-server.vercel.app/services`)
         },
         {
           path : '/blog',
           element : <Blog></Blog>
+        },
+        {
+          path : '/updatereview/:id',
+          element : <UpdateReview></UpdateReview>,
+          loader : ({params}) => fetch(`https://assignement-11-server.vercel.app/review/${params.id}`)
         }
       ]
     }
