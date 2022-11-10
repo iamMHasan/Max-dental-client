@@ -6,4 +6,3 @@
 ## Dynamic add service features
 ## Can see other's feedback about the service
 ## Data stored in Mongodb
-## Private routes for some page
