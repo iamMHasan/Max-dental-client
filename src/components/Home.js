@@ -8,6 +8,8 @@ import Services from './Services';
 import { useContext } from 'react';
 import { AuthContext } from '../context/AuthProvider';
 import Features from './Features';
+import HomeSlider from './HomeSlider';
+import H1style from './H1style';
 
 
 const Home = () => {
@@ -18,38 +20,20 @@ const Home = () => {
     return (
         <div className=''>
             <Banner></Banner>
-            <h1 className='my-8'>Find my services</h1>
-            <div className='grid grid-cols-1 md:grid-cols-3 gap-7 my-10 '>
+            <H1style text={'Find services'}> </H1style>
+            <div data-aos="fade-up"
+                data-aos-duration="500" className='grid grid-cols-1 md:grid-cols-3 gap-7 my-10 '>
                 {
                     serviceName.map(serName => (
-                        <div key={serName._id}>
-                            <p className='border rounded p-9  hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>{serName.name}</p>
+                        <div className='border-4 text-center' key={serName._id}>
+                            <Link to={`/services/${serName._id}`}>
+                                <p className='border rounded p-9 hover:text-white hover:bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500'>{serName.name}</p>
+                            </Link>
                         </div>
                     ))
                 }
-                <div className="flex justify-center mx-auto">
-                    <Link to='/services'><button className='btn btn-primary'>Load more services....</button></Link>
-                </div>
             </div>
-            {/* <div className='my-3 p-4 border-4 rounded'>
-                <h1>Here is the services you have added</h1>
-                <div className='py-5'>
-                    {
-                        addedService.length === 0 ? 'Add a service to see here' : <>
-                            {
-                                addedService.map(service => (
-                                    <div key={service._id} className='bg-yellow-500 m-3 py-5 w-[70%] rounded-md mx-auto'>
-                                        <h3 className='py-1'>{service.serviceName}</h3>
-                                        <p>{service.description}</p>
-                                    </div>
-                                ))
-                            }
-                        </>
-                    }
-
-                </div>
-            </div> */}
-            <Features />
+            <HomeSlider/>
         </div>
     );
 };

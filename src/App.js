@@ -28,7 +28,7 @@ function App() {
         {
           path: '/',
           element: <Home></Home>,
-          loader : ()=> fetch('https://assignement-11-server.vercel.app/servicesName')
+          loader : ()=> fetch('https://assignement-11-server.vercel.app/services')
         },
         {
           path : '/services',
@@ -70,7 +70,7 @@ function App() {
     }
   ])
   return (
-    <div className="App">
+    <div className="w-[95%] mx-auto">
       <RouterProvider router={router}></RouterProvider>
     </div>
   );

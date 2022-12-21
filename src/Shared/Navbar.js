@@ -8,7 +8,9 @@ const Navbar = () => {
     const { logOutUser, user } = useContext(AuthContext)
     const handleLogOut = () => {
         logOutUser()
-            .then(() => { })
+            .then(() => {
+                localStorage.removeItem('kenoBeco')
+            })
             .catch(e => console.log(e))
     }
     const menuItems = <>
@@ -29,12 +31,14 @@ const Navbar = () => {
 
     </>
     return (
-        <div className="navbar ">
+        <div className="navbar p-0 ">
             <div className="navbar-start">
-                <div className='flex items-center'>
-                    <img className='mr-3' src={logo} alt="" />
-                    <p>Rayn's Dental</p>
-                </div>
+                <Link to='/'>
+                    <div className='flex items-center'>
+                        <img className='mr-3' src={logo} alt="" />
+                        <p>Rayn's Dental</p>
+                    </div>
+                </Link>
                 <div className="dropdown">
                     <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
                         {menuItems}

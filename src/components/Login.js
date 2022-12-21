@@ -1,77 +1,36 @@
-import { GoogleAuthProvider } from 'firebase/auth';
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
-import { Link, useLocation , useNavigate} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../context/AuthProvider';
-import useTitle from '../hooks/useTitle';
 
 const Login = () => {
-    useTitle('login')
-const [error, setError] =useState('')
-    const googleProvider = new GoogleAuthProvider()
-    const {googleSignIn,logInUser,loading} = useContext(AuthContext)
+    const [error, setError] = useState('')
+   const {logInUser} = useContext(AuthContext)
+    const handleGoogleLogin = () => {
     
-
-    const location = useLocation()
-    const navigate = useNavigate()
-    let from = location.state?.from?.pathname || "/";
-    // google login
-    const handleGoogleLogin = () =>{
-        googleSignIn(googleProvider)
-        .then(result =>{
-            const user = result.user
-            console.log(user);
-        })
-        .catch(err => console.log(err))
     }
-    if(loading){
-        return <div className="w-16  flex h-16 items-center justify-center border-4 border-dashed rounded-full animate-spin border-violet-400"></div>
-    }
-    // user login with eamil
-    
-    const handleFormSubmit = e =>{
+    const handleLogin = (e) =>{
         e.preventDefault()
         const form = e.target
         const email = form.email.value 
         const password = form.password.value 
-        // console.log( email, password);
-        logInUser(email, password)
+
+        logInUser(email,password)
         .then(result =>{
-            const user = result.user 
+            const user = result.user
+            toast.success('register sussecfull')
             console.log(user);
-            navigate(from, { replace: true });
-            form.reset()
-            toast.success('login successful')
-
-            const currentUser = {
-                email : user?.email
-            }
-            fetch('https://assignement-11-server.vercel.app/jwt',{
-                method : 'POST',
-                headers : {
-                    'content-type' : 'application/json'
-                },
-                body : JSON.stringify(currentUser)
-            })
-            .then(res =>res.json())
-            .then(data => {
-                console.log(data);
-                localStorage.setItem('auth-token', data.token)
-            })
-            .catch(err => console.log(err))
-
         })
-        .catch(err => {
-            setError(err)
+        .catch(err =>{
+            setError(err.message)
         })
     }
     return (
-        <div className='flex justify-center h-[100vh]'>
+        <div className='flex justify-center h-[80vh]'>
             <div className="w-full max-w-md p-8 space-y-3 rounded-xl dark:bg-gray-900 dark:text-gray-100">
-                <h1 className="text-2xl font-bold text-center">Log In</h1>
-                <form onSubmit={handleFormSubmit} action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
+                <h1 className="text-2xl font-bold text-center">Login</h1>
+                <form onSubmit={handleLogin} action="" className="space-y-6 ng-untouched ng-pristine ng-valid">
                     <div className="space-y-1 text-sm">
                         <label htmlFor="username" className="block dark:text-gray-400">email</label>
                         <input type="email" name="email" id="username" placeholder="email" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
@@ -79,14 +38,11 @@ const [error, setError] =useState('')
                     <div className="space-y-1 text-sm">
                         <label htmlFor="password" className="block dark:text-gray-400">Password</label>
                         <input type="password" name="password" id="password" placeholder="Password" className="w-full px-4 py-3 rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400" />
-
                     </div>
-                    <button className="block w-full p-3 text-center rounded-sm dark:text-gray-900 dark:bg-violet-400">Sign in</button>
+                    <button className="btn btn-dark">Login</button>
+                    <p>{error}</p>
                 </form>
-                <p className='text-red-900'>{error.message}</p>
-                <p className="text-xs text-center sm:px-6 dark:text-gray-400">Dont Have an account?
-                    <Link rel="noopener noreferrer" to='/register' className="underline dark:text-gray-100">Sign up</Link>
-                </p>
+                <p className='text-red-900 text-center'></p>
                 <div className="flex items-center pt-4 space-x-1">
                     <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
                     <p className="px-3 text-sm dark:text-gray-400">Login with social accounts</p>
@@ -101,6 +57,10 @@ const [error, setError] =useState('')
                         </svg>
                     </button>
                 </div>
+
+                <p className="text-xs text-center sm:px-6 dark:text-gray-400">Have an account?
+                    <Link rel="noopener noreferrer" to='/login' className="underline dark:text-gray-100">Sign up</Link>
+                </p>
             </div>
         </div>
     );

@@ -5,6 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import AuthProvider from './context/AuthProvider';
 import { ToastContainer} from 'react-toastify';
+import AOS from 'aos';
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+// ..
+AOS.init();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
